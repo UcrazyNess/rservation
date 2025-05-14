@@ -23,6 +23,7 @@ public:
         IsListening = bind(server_socket , finalAddres , (size_t )sizeof(Addres));
         if (IsListening == -1) {
             perror(  "@@@ server errore @@@ \n  in socket \n reson :"); 
+            close(server_socket);
             exit(EXIT_FAILURE);
         }
         
@@ -32,6 +33,7 @@ public:
         IsListening = bind(server_socket , finalAddres , (size_t )sizeof(Addres));
         if (IsListening == -1) {
             perror(  "@@@ server errore @@@ \n  in socket \n reson :"); 
+            close(server_socket);
             exit(EXIT_FAILURE);
         }
 
@@ -59,6 +61,7 @@ int server_socket ;
         Addres.sin_port = htons(8080);
         inet_pton(AF_INET , "127.0.0.1" , &(Addres.sin_addr.s_addr) );
         memset(Addres.sin_zero,0,8);
+        finalAddres = (sockaddr*)&Addres;
     }
 };
 
