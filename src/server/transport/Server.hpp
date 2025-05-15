@@ -1,4 +1,4 @@
-#define SERVER_HPP
+#pragma once
 
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -20,36 +20,38 @@ public:
     
     void testServer (){
         makeSocket( SOCK_DGRAM, IPPROTO_UDP );
-        IsListening = bind(server_socket , finalAddres , (size_t )sizeof(Addres));
+        IsListening = bind(serverSocket , finalAddres , (size_t )sizeof(Addres));
         if (IsListening == -1) {
             perror(  "@@@ server errore @@@ \n  in socket \n reson :"); 
-            close(server_socket);
+            close(serverSocket);
             exit(EXIT_FAILURE);
         }
         
     } 
     void runServer (){
         makeSocket( SOCK_STREAM, IPPROTO_TCP );
-        IsListening = bind(server_socket , finalAddres , (size_t )sizeof(Addres));
+        IsListening = bind(serverSocket , finalAddres , (size_t )sizeof(Addres));
         if (IsListening == -1) {
             perror(  "@@@ server errore @@@ \n  in socket \n reson :"); 
-            close(server_socket);
+            close(serverSocket);
             exit(EXIT_FAILURE);
         }
 
     }
     ~Server(){
-        close(server_socket);
+        close(serverSocket);
     }
-
+    const int& getSocket(){
+        return serverSocket;
+    }
 private:
-int server_socket ;
+int serverSocket ;
     struct sockaddr_in Addres ;
     struct sockaddr *finalAddres ;
 
     void makeSocket (int type , int protocol ){
-        server_socket = socket(AF_INET , type , protocol);
-        if( server_socket == -1 )
+        serverSocket = socket(AF_INET , type , protocol);
+        if( serverSocket == -1 )
         {
             perror(  "@@@ server errore @@@ \n  in socket \n reson :"); 
             exit(EXIT_FAILURE);
