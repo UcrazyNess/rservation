@@ -1,9 +1,31 @@
+#include <fstream>
+#include <ios>
 #include <iostream>
 #include <string>
 #include <vector>
 #include <cstdlib>
 #include "User.hpp"
+
 using namespace std;
+
+string hashing(const string& pass) {
+    string cmd = "echo -n \"" + pass + "\" | sha256sum > tmp/hash.log";
+    system(cmd.c_str());
+
+    ifstream file("tmp/hash.log");
+    string hash_line;
+    getline(file, hash_line);
+    file.close();
+
+ 
+    string hash = hash_line.substr(0, 64);
+
+
+    system("rm -f tmp/hash.log");
+
+    return hash;
+}
+
 
 User::User() : user_id(0), lastName(""), name(""), balance(0.0), isActive(false) {
 
@@ -55,5 +77,6 @@ void User::set_lastName() {
 }
 
 void User::set_hashPassword() {
+    hashPassword = hashing("1234");
 
 }

@@ -26,8 +26,7 @@ public:
     
 private: 
     int user_id;
-    char hashPassword[257];
-    std::string   lastName, name   ;
+    std::string   lastName, name  , hashPassword ;
     float balance ;
     bool isActive ;   
 };
