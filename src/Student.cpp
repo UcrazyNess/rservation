@@ -1,29 +1,36 @@
 #include <iostream>
 #include <string>
+#include <vector>
+#include "User.hpp"
+#include "Reservation.hpp"
 #include "Student.hpp"
 
 using namespace std;
 
-Student::Student() : user_id(0), student_id(""), name(""), email(""), balance(0.0f), isactive(false) {}
+Student::Student() : email(""), phone(""), balance(0.0), isActive(false) {}
 
-void Student::print() {
-    cout << "Student: " << name << " (" << student_id << ")" << endl;
+void Student::cancel_Reserve(Reservation res) {
+    for (auto it = reservation.begin(); it != reservation.end(); ++it) {
+        if (it->get_reservation_id() == res.get_reservation_id()) {
+            reservation.erase(it);
+            break;
+        }
+    }
 }
 
 void Student::reserve_meal() {
-
 }
 
-string Student::get_student_id() {
-    return student_id;
+bool Student::isactive() {
+    return isActive;
 }
 
-int Student::get_user_id() {
-    return user_id;
+void Student::activate() {
+    isActive = true;
 }
 
-string Student::get_name() {
-    return name;
+void Student::deactivate() {
+    isActive = false;
 }
 
 string Student::get_email() {
@@ -34,6 +41,34 @@ float Student::get_balance() {
     return balance;
 }
 
-bool Student::get_isactive() {
-    return isactive;
+string Student::get_Phone() {
+    return phone;
+}
+
+const Reservation Student::get_reserve(int index) {
+    if (index >= 0 && index < reservation.size()) {
+        return reservation[index];
+    }
+    return Reservation();
+}
+
+void Student::gettype() {
+    cout << "User Type: Student" << endl;
+}
+
+void Student::set_email() {
+    cout << "Enter email: ";
+    cin.ignore();
+    getline(cin, email);
+}
+
+void Student::set_balance() {
+    cout << "Enter balance: ";
+    cin >> balance;
+}
+
+void Student::set_Phone() {
+    cout << "Enter phone: ";
+    cin.ignore();
+    getline(cin, phone);
 }

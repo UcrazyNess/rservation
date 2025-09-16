@@ -2,23 +2,32 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include "User.hpp"
+class Reservation {};
 
-
-class Student {
+class Student :public User{
 public:
     Student();
-    void print() ;
+
+    void cancel_Reserve(Reservation); 
     void reserve_meal();
-    std::string  get_student_id();
-    int  get_user_id();
-    std::string  get_name();
-    std::string  get_email();
-    float  get_balance();
-    bool  get_isactive();
-private: 
-    int user_id;
-    std::string  student_id , name , email;
-    float balance ;
-    bool isactive ;
+    bool    isactive();
+    void    activate();
+    void    deactivate();
     
+    std::string  get_email();
+    float   get_balance();
+    std::string  get_Phone();
+    const Reservation get_reserve(int); 
+    void    gettype() override ;
+    void    set_email();
+    void    set_balance();
+    void    set_Phone();
+    
+private: 
+    std::vector<Reservation> reservation;
+    std::string   email ,phone ;
+    float balance ;
+    bool isActive ;   
 };

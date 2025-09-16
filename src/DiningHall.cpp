@@ -14,8 +14,7 @@ void DiningHall::print() {
 
 void DiningHall::set_name() {
     cout << "Enter name: ";
-    cin.ignore();
-    getline(cin, name);
+    cin >> name ;
 }
 
 void DiningHall::set_hall_id() {
@@ -25,8 +24,7 @@ void DiningHall::set_hall_id() {
 
 void DiningHall::set_address() {
     cout << "Enter address: ";
-    cin.ignore();
-    getline(cin, address);
+    cin >> address ;
 }
 
 void DiningHall::set_capacity() {

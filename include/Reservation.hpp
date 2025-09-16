@@ -2,12 +2,12 @@
 
 #include <iostream>
 #include <ctime>
-#include "Student.hpp"
-#include "DiningHall.hpp"
-#include "Meal.hpp"
+
+class DiningHall{};
+class Meal{};
 
 
-enum status {
+enum Status {
     accepted,
     ready,
     cooking,
@@ -18,18 +18,25 @@ public:
     Reservation();
     void print();
     bool cancel();  
+
     int get_reservation_id();
-    Student get_student();
     DiningHall get_diningHall();
     std::time_t get_created_at();
+    Status getStatus();
+    Meal getMeal();
+
+
+    void setStatus();
     void set_reservation_id(int);
-    void set_student(Student );
-    void set_diningHall(DiningHall );
+    void setDiningHall(DiningHall );
+    void setMeal(Meal );
     void set_created_at(time_t );
+
 private:
     int reservation_id ;
-    Student student;
-    DiningHall diningHall;
+    DiningHall *diningHall;
+    Meal *meal;
     std::time_t created_at;
+    Status status;
 
 };

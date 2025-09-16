@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <vector>
 #include "Meal.hpp"
 using namespace std;
@@ -10,7 +11,7 @@ void Meal::print() {
     cout << "Name: " << name << endl;
     cout << "Price: " << price << endl;
     cout << "Side Items: ";
-    for (const auto& item : item_sides) {
+    for (string item : item_sides) {
         cout << item << " ";
     }
     cout << endl;
@@ -31,8 +32,7 @@ void Meal::set_meal_id() {
 
 void Meal::set_name() {
     cout << "Enter meal name: ";
-    cin.ignore();
-    getline(cin, name);
+    cin>>name;
 }
 
 void Meal::set_price() {
@@ -45,8 +45,7 @@ void Meal::set_item_sides() {
     string item;
     while (true) {
         cout << "Item: ";
-        cin.ignore();
-        getline(cin, item);
+        cin >> item ;
         if (item == "done") break;
         item_sides.push_back(item);
     }
