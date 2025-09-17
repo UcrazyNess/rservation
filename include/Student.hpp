@@ -3,8 +3,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "Reservation.hpp"
 #include "User.hpp"
-class Reservation {};
 
 class Student :public User{
 public:

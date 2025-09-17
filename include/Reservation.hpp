@@ -1,10 +1,11 @@
 #pragma once
 
+#include "DiningHall.hpp"
+#include "Meal.hpp"
 #include <iostream>
 #include <ctime>
 
-class DiningHall{};
-class Meal{};
+
 
 
 enum Status {

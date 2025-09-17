@@ -6,7 +6,7 @@
 #include <string>
 
 enum Meal_type {
-    dinner, 
+dinner, 
     lunch,
     breakfast
 };

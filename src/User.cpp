@@ -15,14 +15,8 @@ string hashing(const string& pass) {
     ifstream file("tmp/hash.log");
     string hash_line;
     getline(file, hash_line);
-    file.close();
-
- 
+    file.close(); 
     string hash = hash_line.substr(0, 64);
-
-
-    system("rm -f tmp/hash.log");
-
     return hash;
 }
 
@@ -78,5 +72,6 @@ void User::set_lastName() {
 
 void User::set_hashPassword() {
     hashPassword = hashing("1234");
+    cout << hashPassword;
 
 }
